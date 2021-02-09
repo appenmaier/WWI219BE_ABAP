@@ -10,10 +10,12 @@ CLASS zcl_219000_demo_0101 DEFINITION
   PRIVATE SECTION.
 ENDCLASS.
 
+
+
 CLASS zcl_219000_demo_0101 IMPLEMENTATION.
 
   METHOD if_oo_adt_classrun~main.
-    out->write('Hallo Welt!'). "Ausgabe
+    out->write( 'Hallo Welt!' ). "Ausgabe
   ENDMETHOD.
 
 ENDCLASS.

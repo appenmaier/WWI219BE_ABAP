@@ -28,7 +28,7 @@ CLASS zcl_219000_demo_0104 IMPLEMENTATION.
     ENDIF.
 
     IF is_fulfilled IS NOT INITIAL.
-      out->write( 'Is Fulfilled' ).
+      out->write( 'Bedingung erfüllt' ).
     ENDIF.
 
     "Mehrfachverzweigung
@@ -38,7 +38,7 @@ CLASS zcl_219000_demo_0104 IMPLEMENTATION.
       WHEN 'BA'.
         out->write( 'British Airways' ).
       WHEN OTHERS.
-        out->write( 'others' ).
+        out->write( 'Sonstiges' ).
     ENDCASE.
   ENDMETHOD.
 
