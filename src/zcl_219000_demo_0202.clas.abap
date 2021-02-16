@@ -22,7 +22,7 @@ CLASS zcl_219000_demo_0202 IMPLEMENTATION.
     "Einfügen von Datensätzen
     connections = VALUE #(
         ( carrier_id = 'LH' connection_id = '0400' airport_from_id = 'FRA' airport_to_id = 'JFK' )
-        ( carrier_id = 'LH' connection_id = '0400' airport_from_id = 'FRA' airport_to_id = 'JFK' )
+        ( carrier_id = 'LH' connection_id = '0400' airport_from_id = 'FRA' airport_to_id = 'XYZ' )
         ( carrier_id = 'LH' connection_id = '0401' airport_from_id = 'JFK' airport_to_id = 'FRA' ) ).
 
     "Erweitern interner Tabellen
@@ -50,7 +50,31 @@ CLASS zcl_219000_demo_0202 IMPLEMENTATION.
     ENDIF.
 
     "Lesen mehrerer Datensätze
+    LOOP AT connections INTO connection WHERE carrier_id = 'LH'.
+      out->write( |{ sy-tabix } - { connection-connection_id }| ).
+    ENDLOOP.
 
+    "Ändern eines Einzelsatzes per...
+    connections[ 3 ]-airport_to_id = 'BER'. "...Index
+    connections[ carrier_id = 'UA' ]-airport_to_id = 'BER'. "...Schlüssel
+
+    "Ändern mehrerer Datensätze
+    "DATA connection2 TYPE REF TO z219000_connection.
+    LOOP AT connections REFERENCE INTO DATA(connection2) WHERE carrier_id = 'LH'.
+      connection2->airport_from_id = 'BER'.
+    ENDLOOP.
+
+    "Sortieren interner Tabellen
+    SORT connections BY carrier_id ASCENDING connection_id DESCENDING airport_from_id ASCENDING.
+
+    "Löschen eines Einzelsatzes
+    DELETE connections INDEX 1.
+
+    "Löschen mehrerer Datensätze
+    DELETE connections WHERE carrier_id = 'LH'.
+
+    "Größe von internen Tabellen
+    DATA(number_of_lines) = lines( connections ).
   ENDMETHOD.
 
 ENDCLASS.
