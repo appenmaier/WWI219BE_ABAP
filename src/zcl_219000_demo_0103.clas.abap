@@ -12,7 +12,8 @@ ENDCLASS.
 
 
 
-CLASS zcl_219000_demo_0103 IMPLEMENTATION.
+CLASS ZCL_219000_DEMO_0103 IMPLEMENTATION.
+
 
   METHOD if_oo_adt_classrun~main.
     DATA result TYPE p LENGTH 16 DECIMALS 2.
@@ -37,5 +38,4 @@ CLASS zcl_219000_demo_0103 IMPLEMENTATION.
     result = abs( -3 ). out->write( |Betrag: | && result ). "Betrag
     result = ipow( base = 5 exp = 3 ). out->write( |Potenz: | && result ). "Potenz
   ENDMETHOD.
-
 ENDCLASS.

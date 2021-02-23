@@ -12,7 +12,8 @@ ENDCLASS.
 
 
 
-CLASS zcl_219000_demo_0104 IMPLEMENTATION.
+CLASS ZCL_219000_DEMO_0104 IMPLEMENTATION.
+
 
   METHOD if_oo_adt_classrun~main.
     DATA carrier_id TYPE /dmo/carrier_id VALUE 'LH'.
@@ -41,5 +42,4 @@ CLASS zcl_219000_demo_0104 IMPLEMENTATION.
         out->write( 'Sonstiges' ).
     ENDCASE.
   ENDMETHOD.
-
 ENDCLASS.
