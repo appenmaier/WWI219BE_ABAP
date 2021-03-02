@@ -1,7 +1,7 @@
 @AbapCatalog.viewEnhancementCategory: [#NONE]
 @AccessControl.authorizationCheck: #CHECK
 @EndUserText.label: 'View 2: Annotations'
-@Metadata.ignorePropagatedAnnotations: true
+@Metadata.ignorePropagatedAnnotations: false
 @ObjectModel.usageType:{
     serviceQuality: #X,
     sizeCategory: #S,
@@ -13,7 +13,7 @@
     typeNamePlural: 'Connections'
 }
 define view entity ZI_219000_Annotations
-  as select from /dmo/connection
+  as select from ZI_219000_Syntax
 {
 
       @UI.facet: [{ id: 'idIdentification',
@@ -25,13 +25,13 @@ define view entity ZI_219000_Annotations
             lineItem: [{ position: 10 }],
             identification: [{ position: 10 }]
       }
-  key carrier_id                        as CarrierId,
+  key CarrierId,
       @UI:{
             selectionField: [{ position: 20 }],
             lineItem: [{ position: 20 }],
             identification: [{ position: 20 }]
       }
-  key connection_id                     as ConnectionId,
+  key ConnectionId,
       @UI:{
             selectionField: [{ position: 30 }],
             lineItem: [{ position: 30 }],
@@ -41,7 +41,7 @@ define view entity ZI_219000_Annotations
             defaultSearchElement: true,
             fuzzinessThreshold: 0.5
       }
-      airport_from_id                   as AirportFromId,
+      AirportFromId,
       @UI:{
             selectionField: [{ position: 40 }],
             lineItem: [{ position: 40 }],
@@ -51,21 +51,23 @@ define view entity ZI_219000_Annotations
             defaultSearchElement: true,
             fuzzinessThreshold: 0.5
       }
-      airport_to_id                     as AirportToId,
+      AirportToId,
       @UI:{
             identification: [{ position: 50 }]
       }
-      departure_time                    as DepartureTime,
+      DepartureTime,
       @UI:{
             identification: [{ position: 60 }]
       }
-      arrival_time                      as ArrivalTime,
+      ArrivalTime,
       @UI:{
             lineItem: [{ position: 50 }],
             identification: [{ position: 70 }]
       }
       @Semantics.quantity.unitOfMeasure: 'DistanceUnit'
-      cast(distance as abap.quan(16,2)) as Distance,
+      @EndUserText.label: 'Distance'
+      @EndUserText.quickInfo: 'Distance'
+      cast(Distance as abap.quan(10,0)) as Distance,
       @UI.hidden: true
-      distance_unit                     as DistanceUnit
+      DistanceUnit
 }

@@ -1,7 +1,7 @@
 @AbapCatalog.viewEnhancementCategory: [#NONE]
 @AccessControl.authorizationCheck: #CHECK
 @EndUserText.label: 'View 1: Syntax'
-@Metadata.ignorePropagatedAnnotations: true
+@Metadata.ignorePropagatedAnnotations: false
 define view entity ZI_219000_Syntax //Name der CDS-View (max. 30 Zeichen)
   as select from /dmo/connection
 {
