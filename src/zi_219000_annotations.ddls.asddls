@@ -25,13 +25,13 @@ define view entity ZI_219000_Annotations
             lineItem: [{ position: 10 }],
             identification: [{ position: 10 }]
       }
-  key carrier_id      as CarrierId,
+  key carrier_id                        as CarrierId,
       @UI:{
             selectionField: [{ position: 20 }],
             lineItem: [{ position: 20 }],
             identification: [{ position: 20 }]
       }
-  key connection_id   as ConnectionId,
+  key connection_id                     as ConnectionId,
       @UI:{
             selectionField: [{ position: 30 }],
             lineItem: [{ position: 30 }],
@@ -41,7 +41,7 @@ define view entity ZI_219000_Annotations
             defaultSearchElement: true,
             fuzzinessThreshold: 0.5
       }
-      airport_from_id as AirportFromId,
+      airport_from_id                   as AirportFromId,
       @UI:{
             selectionField: [{ position: 40 }],
             lineItem: [{ position: 40 }],
@@ -51,15 +51,21 @@ define view entity ZI_219000_Annotations
             defaultSearchElement: true,
             fuzzinessThreshold: 0.5
       }
-      airport_to_id   as AirportToId,
+      airport_to_id                     as AirportToId,
       @UI:{
             identification: [{ position: 50 }]
       }
-      departure_time  as DepartureTime,
+      departure_time                    as DepartureTime,
       @UI:{
             identification: [{ position: 60 }]
       }
-      arrival_time    as ArrivalTime,
-      distance        as Distance,
-      distance_unit   as DistanceUnit
+      arrival_time                      as ArrivalTime,
+      @UI:{
+            lineItem: [{ position: 50 }],
+            identification: [{ position: 70 }]
+      }
+      @Semantics.quantity.unitOfMeasure: 'DistanceUnit'
+      cast(distance as abap.quan(16,2)) as Distance,
+      @UI.hidden: true
+      distance_unit                     as DistanceUnit
 }
