@@ -21,19 +21,22 @@ define view entity ZI_219000_TravelByCustomer
         amount => Price,
         source_currency => CurrencyCode,
         target_currency => cast('EUR' as abap.cuky),
-        exchange_rate_date => BeginDate)        as Price,
+        exchange_rate_date => BeginDate,
+        error_handling => 'SET_TO_NULL')        as Price,
       @Semantics.amount.currencyCode: 'CurrencyCode'
       currency_conversion(
         amount => BookingFee,
         source_currency => CurrencyCode,
         target_currency => cast('EUR' as abap.cuky),
-        exchange_rate_date => BeginDate)        as BookingFee,
+        exchange_rate_date => BeginDate,
+        error_handling => 'SET_TO_NULL')        as BookingFee,
       @Semantics.amount.currencyCode: 'CurrencyCode'
       currency_conversion(
         amount => TotalPrice,
         source_currency => CurrencyCode,
         target_currency => cast('EUR' as abap.cuky),
-        exchange_rate_date => BeginDate)        as TotalPrice,
+        exchange_rate_date => BeginDate,
+        error_handling => 'SET_TO_NULL')        as TotalPrice,
       cast('EUR' as abap.cuky)                  as CurrencyCode,
       Status
 }
