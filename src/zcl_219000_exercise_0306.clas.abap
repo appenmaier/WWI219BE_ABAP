@@ -32,7 +32,6 @@ CLASS zcl_219000_exercise_0306 IMPLEMENTATION.
       out->write( |{ travel-Description }, { travel-BeginDate }, { travel-EndDate }| ).
     ENDLOOP.
 *    out->write( travels ).
-
   ENDMETHOD.
 
 ENDCLASS.
